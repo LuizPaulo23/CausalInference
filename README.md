@@ -1,2 +1,2 @@
-# CausalInference
-Studies on causal inference
+# Econometrics 
+Econometric studies and causal inference
