@@ -43,14 +43,7 @@ $$
 Y_{i} = \beta_{1}+\beta_{2}X_{i}+\mu_{i}
 $$
 
-Expandido para o plano $\mathbb{R}^d$: 
-
-$$
-Y_{i} = \beta_{1} + \beta_{2}X_{i} + \ldots + \beta_{d}X_{i} + \mu_{i}
-$$
-
-
-Observe a adição de $\mu$ representando os resíduos da regressão. Os quais são em essência a diferenças entre os valores observados e estimados. Por sua vez, ${\beta_{1}}$ e ${\beta_{2}}$ representam o intercepto e coeficiente angula da equação da reta, respectivamente. Assim, estima-se dado uma amostra $n$ com variabilidade: 
+Observe a adição de $\mu$ representando os resíduos da regressão. Os quais são em essência a diferenças entre os valores observados e estimados. Por sua vez, ${\beta_{1}}$ e ${\beta_{2}}$ representam o intercepto e coeficiente angular da equação da reta, respectivamente. Assim, estima-se dado uma amostra $n$ com variabilidade: 
 
 $$
 Y_{i} = \hat{\beta_{1}}+{\hat{\beta_{2}}X_{i}}+{\hat{\mu}_{i}}
@@ -70,11 +63,16 @@ Do exposto, desenvolve-se por consequência a busca por encontrar ou, melhor, mi
  observado. Critério bem difundido na literatura, pelo menos desde Friedrich Gauss, é o método dos mínimos quadrados. O qual, como suguere, busca minimizar os resíduos (GUJARATI & PORTER, 2011). Tomando como ponto de partida:
 
 $$
-{\sum \mu^2_{i}} = \sum(Y_i - {\hat{Y_{i}}})^2
+{\sum_{i =1}^n \mu^2_{i}} = \sum(Y_i - {\hat{Y_{i}}})^2
 $$
 $$
-= \sum(Y_i - {\hat{\beta_{1}}}-{\hat{\beta}_{2}}X_{i})^2
+= \sum_{i=1}^n(Y_i - {\hat{\beta_{1}}}-{\hat{\beta}_{2}}X_{i})^2
 $$
+
+## **Dispersão**
+
+
+
 
 Posteriormente
 
@@ -84,6 +82,16 @@ Pode-se estimar considerando apenas uma variável indepedente como segue tomando
 # Modelo de regresssão linear simples 
 y = rnorm(n = 1000)
 x = rnorm(n = 1000, mean = 0, sd = 1) 
+
+test = y - x
+sum(test)
+
+bd = data.frame(depedente = y, explicativa = x)
+
+ggplot2::ggplot(bd)+
+  aes(y, x)+
+  geom_point(pch = 19)+
+  geom_smooth(method = "lm")
 
 model_lm <- stats::lm(formula = y ~ x ) %>% print()
 ```
